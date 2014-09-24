@@ -69,17 +69,12 @@ func (ui *UI) Stop() {
 }
 
 func (ui *UI) Redraw() {
-	// log.Println("Redraw:start")
-	// log.Printf("Redraw:start ui.drawVent=%#v\n", ui.drawVent)
 	ui.drawVent <- true
-	// log.Println("Redraw:end")
 }
 
 func (ui *UI) drawLoop() {
 	var y int
-	// log.Printf("drawLoop:start ui.drawVent=%#v\n", ui.drawVent)
 	for _ = range ui.drawVent {
-		// log.Println("drawLoop:loop")
 		termbox.Clear(ui.DefaultFG, ui.DefaultBG)
 		termbox.HideCursor()
 
@@ -90,7 +85,6 @@ func (ui *UI) drawLoop() {
 		y = ui.printError(0, y)
 
 		termbox.Flush()
-		// log.Println("drawLoop:loop:end")
 	}
 }
 
